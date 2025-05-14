@@ -1,3 +1,9 @@
 @use "./base.scss";
-
+.katex-display {
+    text-align: center !important;
+    display: block;
+    width: 100%;
+    margin: 1em auto;
+  }
+  
 // put your custom CSS here!
