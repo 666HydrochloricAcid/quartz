@@ -19,6 +19,7 @@ const config: QuartzConfig = {
     baseUrl: "666hydrochloricacid.github.io/quartz/",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
+    css: ["styles/custom.scss"],
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
