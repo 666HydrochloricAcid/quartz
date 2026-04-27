@@ -1,3 +1,42 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+
+// 수학 포스팅 전용 스타일 (.math-theme 클래스가 있을 때만 작동)
+.math-theme {
+  font-family: "Times New Roman", Times, serif; // 학술지 느낌의 세리프체
+  line-height: 1.6;
+  text-align: justify;
+
+  // 1.10 Definition과 같은 박스 스타일
+  .definition-box {
+    border: 1px solid var(--gray);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    
+    .definition-title {
+      font-weight: bold;
+      text-decoration: underline;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  // 증명(Proof) 스타일
+  .proof {
+    font-style: italic;
+    &::after {
+      content: "◼"; // 증명 종료 기호
+      float: right;
+    }
+  }
+
+  // 인용구(NOTE) 스타일
+  blockquote {
+    border-left: none;
+    font-size: 0.9em;
+    color: var(--darkgray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
