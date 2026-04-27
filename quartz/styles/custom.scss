@@ -2,10 +2,6 @@
 
 // 1. 수학 포스팅 전용 테마 (.math-theme)
 .math-theme {
-  // 전체 배경 및 기본 텍스트 설정
-  background-color: #ffffff;
-  color: #1a1a1a;
-  
   // 학술지 느낌의 Serif 폰트 강제 적용
   &.article, .content {
     font-family: "Times New Roman", Times, "Libertinus Serif", "Noto Serif KR", serif !important;
@@ -90,13 +86,5 @@
   ol.roman {
     list-style-type: lower-roman;
     padding-left: 1.5rem;
-  }
-}
-
-// 2. Quartz 기본 다크모드 대응 (수학 테마일 때도 가독성 유지)
-body[aria-theme="dark"] .math-theme {
-  color: #eeeeee;
-  .definition-box {
-    border-color: #eeeeee;
   }
 }
