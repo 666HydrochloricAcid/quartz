@@ -1,66 +1,60 @@
 @use "./base.scss";
 
-// 1. 수학 포스팅 전용 테마 (.math-theme)
+// 수학 포스팅 전용 테마 (.math-theme)
 .math-theme {
-  // 학술지 느낌의 Serif 폰트 강제 적용
+  // 1. 기본 폰트 설정 (배경색은 유지, 글꼴만 Serif로)
   &.article, .content {
     font-family: "Times New Roman", Times, "Libertinus Serif", "Noto Serif KR", serif !important;
     line-height: 1.6;
     text-align: justify;
-    word-break: break-word;
   }
 
-  // 제목 스타일 (1.3 COMPLETENESS 소제목 등)
-  h1, h2, h3, h4 {
+  // 2. 타이틀 공통 스타일 (Definition, Theorem, Example 등 모두 적용)
+  // 이미지처럼 '볼드 + 밑줄 + 약간의 자간 조정'을 적용합니다.
+  .math-title {
     font-family: "Times New Roman", Times, serif !important;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-bottom: none;
-    margin-top: 2rem;
+    font-weight: 800; // 가장 굵은 볼드체
+    text-underline-offset: 2px;
+    margin-right: 0.5rem;
+    color: var(--darkgray); // 테마의 기본 강조색 (다크모드 대응)
+    display: inline-block;
   }
 
-  // Definition 실선 박스
-  .definition-box {
-    border: 1px solid #1a1a1a;
-    padding: 1.5rem;
+  // 3. 박스형 구조 (Definition, Theorem, Lemma, Property, Corollary)
+  .math-box {
+    border: 1px solid var(--gray);
+    padding: 1.2rem 1.5rem;
     margin: 2rem 0;
-    background-color: transparent;
-
-    // 박스 내부 마크다운 요소 폰트 유지
-    p, li, span, div {
-      font-family: "Times New Roman", Times, serif !important;
-    }
-
-    .definition-title {
-      font-weight: bold;
-      text-decoration: underline;
-      display: block;
-      margin-bottom: 0.7rem;
-      font-size: 1.1em;
+    
+    .math-title {
+      display: block; // 박스형에서는 타이틀을 한 줄 전체 차지하게
+      margin-bottom: 0.8rem;
     }
   }
 
-  // NOTE: (인용구) 스타일
-  blockquote {
-    border-left: none;
+  // 4. 인라인형 구조 (Example, Remark, Recall)
+  .math-inline {
     margin: 1.5rem 0;
-    padding: 0;
-    font-size: 0.95em;
-    color: #333;
-
-    p {
-      font-variant: small-caps; // NOTE 글자를 작게 대문자화
+    
+    .math-title {
+      text-transform: uppercase; // EXAMPLE, REMARK 등을 대문자로
+      font-style: italic; // 고전 교재 특유의 이탤릭 볼드
     }
   }
 
-  // Proof(증명) 및 예제 스타일
+  // 5. Proof(증명) 전용 스타일
   .proof {
-    font-style: italic;
     margin: 1rem 0;
-    display: block;
+    font-style: italic;
+    
+    .proof-title {
+      font-weight: bold;
+      font-style: italic;
+      text-decoration: none; // 증명(Proof)은 보통 밑줄을 긋지 않음
+      &::after { content: ". "; }
+    }
 
-    // 증명 끝 사각형 기호 (Q.E.D)
+    // Q.E.D (증명 종료 기호)
     &::after {
       content: "■";
       float: right;
@@ -69,22 +63,12 @@
     }
   }
 
-  .example-title {
-    font-weight: bold;
-    font-style: italic;
-    text-transform: uppercase;
-    display: block;
-    margin-top: 1.5rem;
-  }
-
-  // KaTeX 수식 크기 미세 조정
-  .katex {
-    font-size: 1.08em;
-  }
-
-  // 로마자 리스트 (i, ii, iii...)
+  // 6. 리스트 및 기타 세부 설정
   ol.roman {
     list-style-type: lower-roman;
-    padding-left: 1.5rem;
+  }
+  
+  .katex {
+    font-size: 1.05em;
   }
 }
