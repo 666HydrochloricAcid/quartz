@@ -3,7 +3,7 @@
 // 수학 포스팅 전용 테마 (.math-theme)
 .math-theme {
   // 1. 기본 폰트 설정 (글꼴만 Serif로 변경, 배경색 유지)
-  &.article, .content {
+  &.article, .content, .math-box, .math-inline, .proof {
     font-family: "Times New Roman", Times, "Libertinus Serif", "Noto Serif KR", serif !important;
     line-height: 1.6;
     text-align: justify;
@@ -28,20 +28,28 @@
     .math-title {
       display: block; // 타이틀이 상단에 독립적으로 위치
       margin-bottom: 0.8rem;
-      text-decoration: underline; // 박스형은 이미지처럼 밑줄 추가
-      text-underline-offset: 3px;
     }
   }
 
   // 4. 인라인형 구조 (Example, Remark, Recall 등 본문과 마진이 같은 경우)
   .math-inline {
-    margin: 1.5rem 0; // 위아래 여백만 유지 (좌우 박스 없음)
-    display: block;
-    
+    margin: 1.5rem 0;
+    display: block; // 블록으로 선언하여 줄바꿈 보장
+    color: var(--darkgray);
+
+    // 타이틀 스타일
     .math-title {
-      text-transform: uppercase; // EXAMPLE, REMARK 대문자화
-      font-style: italic; // 이탤릭 볼드 스타일
-      display: inline; // 뒤에 오는 본문과 같은 줄에 위치
+      font-weight: 800;
+      font-style: italic;
+      text-transform: uppercase;
+      margin-right: 0.5rem;
+      display: inline; // 텍스트와 같은 줄에 위치
+    }
+
+    // 본문 글꼴 강제 (기본 글꼴로 돌아가는 현상 방지)
+    p, span, div {
+      font-family: inherit !important;
+      display: inline; // 내부 요소들이 한 줄로 이어지게 함
     }
   }
 
