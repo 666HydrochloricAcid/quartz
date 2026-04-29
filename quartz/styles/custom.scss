@@ -7,6 +7,8 @@
     font-family: "Times New Roman", Times, "Libertinus Serif", "Noto Serif KR", serif !important;
     line-height: 1.6;
     text-align: justify;
+
+    * { font-family: inherit !important; }
   }
 
   // 2. 타이틀 공통 스타일 (박스형, 인라인형 공통)
@@ -34,12 +36,11 @@
   // 4. 인라인형 구조 (Example, Remark, Recall 등 본문과 마진이 같은 경우)
   .math-inline {
     margin: 1.5rem 0;
-    display: block; // 블록으로 선언하여 줄바꿈 보장
-    color: var(--darkgray);
+    display: inline;
 
     // 타이틀 스타일
     .math-title {
-      display: block;
+      display: inline;
     }
   }
 
