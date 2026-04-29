@@ -2,66 +2,59 @@
 
 // 수학 포스팅 전용 테마 (.math-theme)
 .math-theme {
-  // 1. 기본 글꼴 설정 (전체 세리프 강제)
-  &.article, .content {
+  // 1. 기본 폰트 설정 (글꼴만 Serif로 변경, 배경색 유지)
+  &.article, .content, .math-box, .math-inline, .proof {
     font-family: "Times New Roman", Times, "Libertinus Serif", "Noto Serif KR", serif !important;
     line-height: 1.6;
     text-align: justify;
-
-    // 모든 하위 요소에 글꼴 상속 (기본 폰트 복구 방지)
-    * {
-      font-family: inherit !important;
-    }
   }
 
-  // 2. 타이틀 공통 스타일
-  .math-title, .proof-title {
-    font-family: inherit !important;
-    font-weight: 800; // 가장 굵은 볼드
+  // 2. 타이틀 공통 스타일 (박스형, 인라인형 공통)
+  .math-title {
+    font-family: "Times New Roman", Times, serif !important;
+    font-weight: 800; // 가장 굵은 볼드체
+    margin-right: 0.6rem;
     color: var(--darkgray);
-    margin-right: 0.5rem;
+    display: inline-block;
   }
 
-  // 3. 박스형 구조 (Definition, Theorem 등)
+  // 3. 박스형 구조 (Definition, Theorem, Lemma 등 강조가 필요한 경우)
   .math-box {
     border: 1px solid var(--gray);
     padding: 1.2rem 1.5rem;
     margin: 2rem 0;
     display: block;
-
+    
     .math-title {
-      display: block;
+      display: block; // 타이틀이 상단에 독립적으로 위치
       margin-bottom: 0.8rem;
-      text-decoration: none; // 박스 밑줄 제거
     }
   }
 
-  // 4. 인라인형 구조 (Example, Remark 등)
+  // 4. 인라인형 구조 (Example, Remark, Recall 등 본문과 마진이 같은 경우)
   .math-inline {
     margin: 1.5rem 0;
-    display: block;
+    display: block; // 블록으로 선언하여 줄바꿈 보장
+    color: var(--darkgray);
 
+    // 타이틀 스타일
     .math-title {
-      text-transform: uppercase;
-      display:block; 
+      display: block;
     }
-    
-    // 본문 내용이 타이틀 옆에 붙도록 설정
-    p, span { display: inline; }
   }
 
-  // 5. Proof(증명) 스타일
+  // 5. Proof(증명) 전용 스타일
   .proof {
     margin: 1.5rem 0;
-    font-style: normal; // 본문 이탤릭 제거
     display: block;
-
+    
     .proof-title {
-      font-style: italic; // 타이틀만 이탤릭 유지 (전통적 양식)
+      font-weight: bold;
+      font-style: italic;
       &::after { content: ". "; }
     }
 
-    // Q.E.D 기호
+    // Q.E.D (증명 종료 기호)
     &::after {
       content: "■";
       float: right;
@@ -70,7 +63,12 @@
     }
   }
 
-  // KaTeX 수식 크기
+  // 6. 리스트 및 기타 세부 설정
+  ol.roman {
+    list-style-type: lower-roman;
+    padding-left: 1.5rem;
+  }
+  
   .katex {
     font-size: 1.05em;
   }
