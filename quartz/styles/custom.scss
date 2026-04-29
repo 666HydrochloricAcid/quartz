@@ -2,55 +2,58 @@
 
 // 수학 포스팅 전용 테마 (.math-theme)
 .math-theme {
-  // 1. 기본 폰트 설정 (배경색은 유지, 글꼴만 Serif로)
+  // 1. 기본 폰트 설정 (글꼴만 Serif로 변경, 배경색 유지)
   &.article, .content {
     font-family: "Times New Roman", Times, "Libertinus Serif", "Noto Serif KR", serif !important;
     line-height: 1.6;
     text-align: justify;
   }
 
-  // 2. 타이틀 공통 스타일 (Definition, Theorem, Example 등 모두 적용)
-  // 이미지처럼 '볼드 + 밑줄 + 약간의 자간 조정'을 적용합니다.
+  // 2. 타이틀 공통 스타일 (박스형, 인라인형 공통)
   .math-title {
     font-family: "Times New Roman", Times, serif !important;
     font-weight: 800; // 가장 굵은 볼드체
-    text-underline-offset: 2px;
-    margin-right: 0.5rem;
-    color: var(--darkgray); // 테마의 기본 강조색 (다크모드 대응)
+    margin-right: 0.6rem;
+    color: var(--darkgray);
     display: inline-block;
   }
 
-  // 3. 박스형 구조 (Definition, Theorem, Lemma, Property, Corollary)
+  // 3. 박스형 구조 (Definition, Theorem, Lemma 등 강조가 필요한 경우)
   .math-box {
     border: 1px solid var(--gray);
     padding: 1.2rem 1.5rem;
     margin: 2rem 0;
+    display: block;
     
     .math-title {
-      display: block; // 박스형에서는 타이틀을 한 줄 전체 차지하게
+      display: block; // 타이틀이 상단에 독립적으로 위치
       margin-bottom: 0.8rem;
+      text-decoration: underline; // 박스형은 이미지처럼 밑줄 추가
+      text-underline-offset: 3px;
     }
   }
 
-  // 4. 인라인형 구조 (Example, Remark, Recall)
+  // 4. 인라인형 구조 (Example, Remark, Recall 등 본문과 마진이 같은 경우)
   .math-inline {
-    margin: 1.5rem 0;
+    margin: 1.5rem 0; // 위아래 여백만 유지 (좌우 박스 없음)
+    display: block;
     
     .math-title {
-      text-transform: uppercase; // EXAMPLE, REMARK 등을 대문자로
-      font-style: italic; // 고전 교재 특유의 이탤릭 볼드
+      text-transform: uppercase; // EXAMPLE, REMARK 대문자화
+      font-style: italic; // 이탤릭 볼드 스타일
+      display: inline; // 뒤에 오는 본문과 같은 줄에 위치
     }
   }
 
   // 5. Proof(증명) 전용 스타일
   .proof {
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     font-style: italic;
+    display: block;
     
     .proof-title {
       font-weight: bold;
       font-style: italic;
-      text-decoration: none; // 증명(Proof)은 보통 밑줄을 긋지 않음
       &::after { content: ". "; }
     }
 
@@ -66,6 +69,7 @@
   // 6. 리스트 및 기타 세부 설정
   ol.roman {
     list-style-type: lower-roman;
+    padding-left: 1.5rem;
   }
   
   .katex {
