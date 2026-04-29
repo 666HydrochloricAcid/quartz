@@ -35,10 +35,16 @@
   // 4. 인라인형 구조 (Example, Remark, Recall)
   .math-inline {
     margin: 1.5rem 0;
-    
-    .math-title {
-      text-transform: uppercase; // EXAMPLE, REMARK 등을 대문자로
-      font-style: italic; // 고전 교재 특유의 이탤릭 볼드
+    font-family: "Times New Roman", serif !important;
+    display: block; // 인라인 요소가 한 줄로 붙는 것 방지
+
+    // 타이틀(첫 번째 줄) 스타일링
+    strong:first-of-type {
+      font-weight: 800;
+      text-decoration: underline;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-right: 8px;
     }
   }
 
