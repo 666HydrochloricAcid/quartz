@@ -39,11 +39,6 @@
       color: var(--darkgray);
       margin-right: 0.6rem;
     }
-
-    // 내부 문단 뭉침 방지 및 인라인 유지
-    p, span {
-      display: inline !important;
-    }
   }
 
   // 5. Proof(증명) 전용 스타일
