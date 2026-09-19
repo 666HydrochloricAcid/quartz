@@ -86,6 +86,19 @@ const calloutMapping = {
   example: "example",
   quote: "quote",
   cite: "quote",
+  definition: "definition",
+  def: "definition",
+  theorem: "theorem",
+  thm: "theorem",
+  lemma: "lemma",
+  corollary: "corollary",
+  cor: "corollary",
+  proposition: "proposition",
+  prop: "proposition",
+  remark: "remark",
+  rmk: "remark",
+  proof: "proof",
+  pf: "proof",
 } as const
 
 const arrowMapping: Record<string, string> = {
