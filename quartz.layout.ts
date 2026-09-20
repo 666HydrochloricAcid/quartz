@@ -1,8 +1,8 @@
-// quartz.layout.ts 에 반영할 부분만 발췌했습니다.
-
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
+import { SimpleSlug } from "./quartz/util/path"
 
+// 모든 페이지가 공유하는 부분
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
@@ -10,11 +10,11 @@ export const sharedPageComponents: SharedLayout = {
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/666HydrochloricAcid",
-      // 필요하면 여기에 추가
     },
   }),
 }
 
+// 본문 글 + 홈
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     Component.Breadcrumbs(),
@@ -28,20 +28,8 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
-    // 주제가 넷으로 늘었으니 폴더는 접힌 상태로 시작하는 편이 낫습니다.
-    Component.Explorer({
-      folderDefaultState: "collapsed",
-      // math / ml / philosophy / tools 순으로 고정
-      sortFn: (a, b) => {
-        const order = ["math", "ml", "philosophy", "tools", "series", "notes"]
-        const ai = order.indexOf(a.slugSegment)
-        const bi = order.indexOf(b.slugSegment)
-        if (ai !== -1 || bi !== -1) {
-          return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi)
-        }
-        return a.displayName.localeCompare(b.displayName, "ko")
-      },
-    }),
+    // 주제가 넷으로 늘었으니 폴더는 접힌 상태로 시작합니다.
+    Component.Explorer({ folderDefaultState: "collapsed" }),
   ],
 
   right: [
@@ -60,7 +48,7 @@ export const defaultContentPageLayout: PageLayout = {
       component: Component.RecentNotes({
         title: "최근에 고친 노트",
         limit: 5,
-        linkToMore: "tags/" as const,
+        linkToMore: "tags/" as SimpleSlug,
         filter: (f) => !["conventions", "index"].includes(f.slug ?? ""),
       }),
       condition: (page) => page.fileData.slug === "index",
@@ -68,16 +56,33 @@ export const defaultContentPageLayout: PageLayout = {
   ],
 }
 
+// 태그 페이지 / 폴더 페이지
+// tagPage.tsx 와 folderPage.tsx 가 이걸 import 합니다. 지우면 빌드가 깨집니다.
+export const defaultListPageLayout: PageLayout = {
+  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
+
+  left: [
+    Component.PageTitle(),
+    Component.MobileOnly(Component.Spacer()),
+    Component.Search(),
+    Component.Darkmode(),
+    Component.DesktopOnly(Component.Explorer({ folderDefaultState: "collapsed" })),
+  ],
+
+  right: [],
+}
+
 // 참고
 //
-// 1. ConditionalRender 는 비교적 최근에 들어온 컴포넌트입니다.
-//    quartz/components/index.ts 에 export 가 없으면 v4 최신으로 올리시거나,
-//    ConditionalRender 없이 RecentNotes / TableOfContents 만 두셔도 됩니다.
+// 1. ConditionalRender 가 v4.5.0 에 없다면 (quartz/components/index.ts 에서 확인)
+//    감싼 부분을 풀고 Component.DesktopOnly(Component.TableOfContents()) 와
+//    Component.RecentNotes({...}) 를 그대로 두세요. 모든 글에 붙는 것 말고는
+//    문제 없습니다.
 //
-// 2. Explorer 의 sortFn 시그니처는 버전에 따라 FileNode 구조가 조금 다릅니다.
-//    타입 에러가 나면 quartz/components/ExplorerNode.tsx 에서 필드 이름을 확인하세요.
-//    (구버전은 a.name, 신버전은 a.slugSegment / a.displayName)
+// 2. 사이드바 폴더 순서를 math / ml / philosophy / tools 로 고정하고 싶으면
+//    Explorer 에 sortFn 을 넘기면 됩니다. 다만 FileNode 의 필드 이름이 버전마다
+//    달라서(name vs displayName/slugSegment), quartz/components/ExplorerNode.tsx 를
+//    먼저 확인하고 붙이세요. 지금은 기본 정렬입니다.
 //
-// 3. 수학 글에 KaTeX 매크로를 쓰실 거면 quartz.config.ts 의
+// 3. KaTeX 매크로는 quartz.config.ts 의 Plugin.Latex 쪽에서 등록합니다.
 //    Plugin.Latex({ renderEngine: "katex", katexOptions: { macros: { ... } } })
-//    쪽에 \abs, \norm 같은 걸 등록해 두면 글마다 다시 정의할 필요가 없습니다.
