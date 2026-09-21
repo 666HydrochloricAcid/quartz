@@ -1,72 +1,268 @@
 @use "./base.scss";
 
-// 수학 포스팅 전용 테마 (.math-theme)
-.math-theme {
-  // 1. 기본 폰트 설정 (글꼴만 Serif로 변경, 배경색 유지)
-  &.article, .content, .math-box, .math-inline, .proof {
-    font-family: "Times New Roman", Times, "Libertinus Serif", "Noto Serif KR", serif !important;
-    line-height: 1.6;
-    text-align: justify;
+// quartz/styles/custom.scss 끝에 붙여 넣으세요.
+// 색은 전부 Quartz 테마 변수만 씁니다. 다크모드에서 따로 손볼 것이 없습니다.
 
-    * { font-family: inherit !important; }
+/* ─────────────────────────────────────────────
+   1. 홈 화면 연재 카드
+   ───────────────────────────────────────────── */
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.2rem 0 2rem;
+
+  @media all and (max-width: 800px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 5px;
+  background-color: var(--light);
+  text-decoration: none;
+  background-image: none; // Quartz 기본 링크 밑줄 제거
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--secondary);
   }
 
-  // 2. 타이틀 공통 스타일 (박스형, 인라인형 공통)
-  .math-box {
-    border: 1px solid var(--gray);
-    padding: 1.2rem 1.5rem;
-    margin: 2rem 0;
-    display: block;
+  &:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+  }
+}
 
-    .box-title {
-      display: block; // 박스형은 제목이 한 줄을 차지
-      font-weight: 800;
-      color: var(--darkgray);
-      margin-bottom: 0.8rem;
-      text-decoration: none;
-      font-style: normal;
-    }
+.home-card-title {
+  font-family: var(--headerFont);
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.home-card-desc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--darkgray);
+}
+
+.home-card-meta {
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  color: var(--gray);
+}
+
+/* ─────────────────────────────────────────────
+   2. Wade 스타일 수학 환경
+   정의만 박스, 나머지는 전부 활자 처리.
+   ob.ts 패치(callouts.patch.md)가 선행되어야 합니다.
+   ───────────────────────────────────────────── */
+
+// 공통: 아이콘 제거, 왼쪽 막대 제거, 여백 정리
+.callout[data-callout="definition"],
+.callout[data-callout="theorem"],
+.callout[data-callout="lemma"],
+.callout[data-callout="corollary"],
+.callout[data-callout="proposition"],
+.callout[data-callout="remark"],
+.callout[data-callout="proof"] {
+  --color: var(--darkgray);
+  --border: var(--lightgray);
+  --bg: transparent;
+
+  border-left: none;
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+  margin: 1.4rem 0;
+  font-size: inherit;
+
+  > .callout-title {
+    gap: 0.35rem;
+    padding: 0;
+    color: var(--dark);
+    font-weight: 700;
+    font-family: var(--headerFont);
   }
 
-  // 4. 인라인형 구조 (Example, Remark, Recall 등 본문과 마진이 같은 경우)
-  .math-inline {
-    margin: 1.5rem 0;
-    display: block;
-
-    .inline-title {
-      display: inline; // 본문과 같은 줄에 위치
-      font-weight: 800;
-      color: var(--darkgray);
-      margin-right: 0.6rem;
-    }
+  .callout-icon,
+  .callout-title .fold {
+    display: none;
   }
 
-  // 5. Proof(증명) 전용 스타일
-  .proof {
-    margin: 1.5rem 0;
-    display: block;
-    
-    .proof-title {
-      font-weight: bold;
-      font-style: italic;
+  > .callout-content {
+    margin-top: 0.35rem;
+    padding: 0;
+  }
+
+  // 환경 안에서 문단 사이 여백을 줄여 교재 조판에 가깝게
+  > .callout-content > p {
+    margin: 0.4rem 0;
+  }
+
+  > .callout-content > p:first-child {
+    margin-top: 0;
+  }
+
+  > .callout-content > p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// quartz/styles/custom.scss 끝에 붙여 넣으세요.
+// 색은 전부 Quartz 테마 변수만 씁니다. 다크모드에서 따로 손볼 것이 없습니다.
+
+/* ─────────────────────────────────────────────
+   1. 홈 화면 연재 카드
+   ───────────────────────────────────────────── */
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.2rem 0 2rem;
+
+  @media all and (max-width: 800px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 5px;
+  background-color: var(--light);
+  text-decoration: none;
+  background-image: none; // Quartz 기본 링크 밑줄 제거
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--secondary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+  }
+}
+
+.home-card-title {
+  font-family: var(--headerFont);
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.home-card-desc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--darkgray);
+}
+
+.home-card-meta {
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  color: var(--gray);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-card {
+    transition: none;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   2. 수학 글
+   Definition 박스: 외곽선만, 배경 없음.
+   표제(**Definition 1.1.**)는 마크다운 굵은 글씨로 직접 씁니다.
+   ───────────────────────────────────────────── */
+
+.def {
+  border: 1px solid var(--gray);
+  border-radius: 3px;
+  padding: 0.8rem 1rem;
+  margin: 1.4rem 0;
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  // 박스 안 목록 여백을 조금 줄여 교재 조판에 가깝게
+  ol,
+  ul {
+    margin: 0.4rem 0;
+  }
+}
+
+// 긴 수식이 박스를 뚫고 나가지 않도록
+.def .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* ─────────────────────────────────────────────
+   3. 접는 Proof (선택)
+   <details class="proof"> 로 감쌌을 때만 적용됩니다.
+   평문으로 쓴 Proof 에는 아무 영향 없습니다.
+   ───────────────────────────────────────────── */
+
+details.proof {
+  margin: 1rem 0 1.4rem;
+
+  > summary {
+    font-style: italic;
+    color: var(--darkgray);
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
     }
 
-    // Q.E.D (증명 종료 기호)
     &::after {
-      content: "■";
-      float: right;
+      content: " (펼치기)";
       font-style: normal;
-      margin-top: 0.5rem;
+      font-size: 0.8em;
+      color: var(--gray);
     }
   }
 
-  // 6. 리스트 및 기타 세부 설정
-  ol.roman {
-    list-style-type: lower-roman;
-    padding-left: 1.5rem;
+  &[open] > summary::after {
+    content: "";
   }
-  
-  .katex {
-    font-size: 1.05em;
+
+  > :last-child::after {
+    content: " ∎";
+  }
+
+  > p:nth-child(2) {
+    margin-top: 0.4rem;
+  }
+}
+/* ─────────────────────────────────────────────
+   3. 철학 글용 (평문 유지, 여백만 조정)
+   frontmatter 에 style: prose 를 넣은 글에만 적용됩니다.
+   ───────────────────────────────────────────── */
+
+article:has(+ .prose-marker),
+body[data-style="prose"] article {
+  p {
+    line-height: 1.8;
+  }
+
+  blockquote {
+    font-size: 0.95em;
   }
 }

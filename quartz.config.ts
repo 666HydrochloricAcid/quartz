@@ -1,5 +1,18 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
+import { QuartzPluginData } from "./quartz/plugins/vfile"
+
+const bookOrder = (a: QuartzPluginData, b: QuartzPluginData) => {
+  const oa = Number(a.frontmatter?.order)
+  const ob = Number(b.frontmatter?.order)
+  const ha = Number.isFinite(oa)
+  const hb = Number.isFinite(ob)
+  if (ha && hb && oa !== ob) return oa - ob
+  if (ha !== hb) return ha ? -1 : 1
+  const ta = a.frontmatter?.title ?? a.slug ?? ""
+  const tb = b.frontmatter?.title ?? b.slug ?? ""
+  return ta.localeCompare(tb, "ko", { numeric: true, sensitivity: "base" })
+}
 
 /**
  * Quartz 4 Configuration
@@ -8,7 +21,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "ConstructionsFromScratch",
+    pageTitle: "IVAN",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -16,7 +29,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "botaniclearning.netlify.app",
+    baseUrl: "ivanh.netlify.app",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
@@ -34,21 +47,21 @@ const config: QuartzConfig = {
           gray: "#b8b8b8",
           darkgray: "#4e4e4e",
           dark: "#2b2b2b",
-          secondary: "#284b63",
+          secondary: "#66B2B2",
           tertiary: "#84a59d",
           highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
+          textHighlight: "#46302B88",
         },
         darkMode: {
-          light: "#161618",
+          light: "#111418",
           lightgray: "#393639",
           gray: "#646464",
           darkgray: "#d4d4d4",
           dark: "#ebebec",
-          secondary: "#7b97aa",
+          secondary: "#66B2B2",
           tertiary: "#84a59d",
           highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          textHighlight: "#46302B88",
         },
       },
     },
@@ -78,7 +91,7 @@ const config: QuartzConfig = {
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
       Plugin.ContentPage(),
-      Plugin.FolderPage(),
+      Plugin.FolderPage({ sort: bookOrder }),
       Plugin.TagPage(),
       Plugin.ContentIndex({
         enableSiteMap: true,

@@ -1,6 +1,10 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
+import { QuartzComponentProps } from "./quartz/components/types"
 import { SimpleSlug } from "./quartz/util/path"
+
+const onHome = (page: QuartzComponentProps) => page.fileData.slug === "index"
+const offHome = (page: QuartzComponentProps) => page.fileData.slug !== "index"
 
 // 모든 페이지가 공유하는 부분
 export const sharedPageComponents: SharedLayout = {
@@ -16,34 +20,32 @@ export const sharedPageComponents: SharedLayout = {
 
 // 본문 글 + 홈
 export const defaultContentPageLayout: PageLayout = {
+  // 홈에는 히어로가 제목 역할을 하므로 제목·경로·메타를 숨깁니다.
   beforeBody: [
-    Component.Breadcrumbs(),
-    Component.ArticleTitle(),
-    Component.ContentMeta(),
-    Component.TagList(),
+    Component.ConditionalRender({ component: Component.Breadcrumbs(), condition: offHome }),
+    Component.ConditionalRender({ component: Component.ArticleTitle(), condition: offHome }),
+    Component.ConditionalRender({ component: Component.ContentMeta(), condition: offHome }),
+    Component.ConditionalRender({ component: Component.TagList(), condition: offHome }),
   ],
 
   left: [
-    Component.PageTitle(),
+    Component.IvanTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
-    // 주제가 넷으로 늘었으니 폴더는 접힌 상태로 시작합니다.
     Component.Explorer({ folderDefaultState: "collapsed" }),
   ],
 
   right: [
     Component.Graph(),
-    // 홈에서는 목차가 방해가 되므로 본문 글에만 붙입니다.
     Component.ConditionalRender({
       component: Component.DesktopOnly(Component.TableOfContents()),
-      condition: (page) => page.fileData.slug !== "index",
+      condition: offHome,
     }),
     Component.Backlinks(),
   ],
 
   afterBody: [
-    // 홈에서만 최근 글 목록
     Component.ConditionalRender({
       component: Component.RecentNotes({
         title: "최근에 고친 노트",
@@ -51,8 +53,10 @@ export const defaultContentPageLayout: PageLayout = {
         linkToMore: "tags/" as SimpleSlug,
         filter: (f) => !["conventions", "index"].includes(f.slug ?? ""),
       }),
-      condition: (page) => page.fileData.slug === "index",
+      condition: onHome,
     }),
+    // 아무것도 그리지 않고 CSS/JS만 싣습니다. 스크립트가 알아서 홈에서만 동작합니다.
+    Component.HomeEffects(),
   ],
 }
 
@@ -62,7 +66,7 @@ export const defaultListPageLayout: PageLayout = {
   beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
 
   left: [
-    Component.PageTitle(),
+    Component.IvanTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
@@ -71,18 +75,3 @@ export const defaultListPageLayout: PageLayout = {
 
   right: [],
 }
-
-// 참고
-//
-// 1. ConditionalRender 가 v4.5.0 에 없다면 (quartz/components/index.ts 에서 확인)
-//    감싼 부분을 풀고 Component.DesktopOnly(Component.TableOfContents()) 와
-//    Component.RecentNotes({...}) 를 그대로 두세요. 모든 글에 붙는 것 말고는
-//    문제 없습니다.
-//
-// 2. 사이드바 폴더 순서를 math / ml / philosophy / tools 로 고정하고 싶으면
-//    Explorer 에 sortFn 을 넘기면 됩니다. 다만 FileNode 의 필드 이름이 버전마다
-//    달라서(name vs displayName/slugSegment), quartz/components/ExplorerNode.tsx 를
-//    먼저 확인하고 붙이세요. 지금은 기본 정렬입니다.
-//
-// 3. KaTeX 매크로는 quartz.config.ts 의 Plugin.Latex 쪽에서 등록합니다.
-//    Plugin.Latex({ renderEngine: "katex", katexOptions: { macros: { ... } } })
