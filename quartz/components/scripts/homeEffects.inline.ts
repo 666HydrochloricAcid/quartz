@@ -29,7 +29,7 @@ function onFrame(fn: () => void): () => void {
    1. 평행선이 만나 V가 된다 (접속 시 자동 재생)
    획이 다 그려진 뒤, 위쪽 끝점은 고정한 채 아래쪽 끝점이 가운데로 모인다.
    ───────────────────────────────────────────── */
-const CONVERGE_DELAY = 1350 // ms, 마지막 획(N)이 다 그려지는 시점
+const CONVERGE_DELAY = 1650 // ms, 마지막 획(N)이 다 그려지는 시점 (0.36s + 308 × 0.004s ≈ 1.6s)
 const CONVERGE_DURATION = 1000 // ms
 
 function setupHero(hero: HTMLElement): () => void {

@@ -27,7 +27,11 @@
 }
 
 // 선분만으로 작도한 로고
+// 획마다 길이에 비례해 시간을 줘서 펜 속도를 일정하게 맞춘다.
+// (같은 시간을 주면 긴 획이 더 빨리 그려져 앞 글자를 추월한다)
 .ivan-mark {
+  --pen: 0.004s; // 길이 1단위당 시간. 100단위(I 한 획) = 0.4초
+
   display: block;
   width: min(100%, 19rem);
   height: auto;
@@ -41,8 +45,23 @@
     stroke-linejoin: bevel;
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
-    animation: ivan-draw 0.9s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-    animation-delay: calc(var(--i, 0) * 0.14s);
+    animation: ivan-draw calc(var(--len, 100) * var(--pen)) cubic-bezier(0.65, 0, 0.35, 1)
+      forwards;
+    animation-delay: calc(var(--i, 0) * 0.12s);
+  }
+
+  // 각 글자의 전체 획 길이 (viewBox 단위)
+  path:nth-of-type(1) {
+    --len: 100; // I
+  }
+  path:nth-of-type(2) {
+    --len: 200; // V — 처음엔 평행선 두 개
+  }
+  path:nth-of-type(3) {
+    --len: 228; // A — 사선 둘 + 가로획
+  }
+  path:nth-of-type(4) {
+    --len: 308; // N — 세로 둘 + 사선
   }
 
   // V 만 강조색. 평행한 동안은 회색, 만나는 순간 강조색으로.
@@ -99,7 +118,7 @@
 
   b,
   .tail {
-    animation-delay: calc(2s + var(--i, 0) * 0.28s);
+    animation-delay: calc(2.3s + var(--i, 0) * 0.28s);
   }
 }
 
