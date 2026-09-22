@@ -4,7 +4,7 @@ description: Index Page
 ---
 <div class="ivan-hero"> <div class="ivan-title" role="heading" aria-level="1"><span class="ivan-sr">IVAN</span><svg class="ivan-mark" viewBox="-6 -8 242 116" aria-hidden="true" focusable="false"><path style="--i:0" pathLength="1" d="M10,0 L10,100"/><path class="ivan-v" data-ivan-v style="--i:1" pathLength="1" d="M40,0 L60,100 L80,0"/><path style="--i:2" pathLength="1" d="M110,100 L130,0 L150,100 M118,62 L142,62"/><path style="--i:3" pathLength="1" d="M180,100 L180,0 L220,100 L220,0"/></svg></div> <p class="ivan-acro"><b>I</b><span class="tail" style="--i:0">ntellectual</span> <b>V</b><span class="tail" style="--i:1">alidation</span> <b >A</b><span class="tail" style="--i:2">nd</span> <b>N</b><span class="tail" style="--i:3">oting</span></p> </div>
 
-# Series
+# Series on Process
 
 <div class="home-grid">
   <a class="home-card" href="/Specialization/Mathematics/Mathematical-Logics/">
@@ -39,29 +39,26 @@ description: Index Page
   </a>
 </div>
 
-# Recommended Order
+# Metatheory
 
-노트끼리 선수 관계가 있어서, 처음이라면 이 순서를 권합니다.
+Although there are clear prerequisite relationships between the disciplines, they all rely on a shared metatheory; therefore, I recommend reading this first.
 
-1. [[Metatheory]]
-2. [실수의 완비성](/notes/completeness-of-R) → 해석학 노트로 이어집니다
-3. [시그마 대수](/notes/sigma-algebra) → 측도론 노트로 이어집니다
-4. [선형대수 복습](/notes/linear-algebra-recap) → 기계학습 쪽 글의 전제
+[[Metatheory|Metatheory : The foundation of IVAN]]
 
-철학 글은 선수 관계가 느슨합니다. 계보 연재는 순서대로 읽는 편이 낫지만, 개별 철학자 글은 어디서 시작해도 됩니다.
+Please also note that the prerequisite relationships between the subjects are presented here in a tree format.
 
-## 주제별로 보기
+# Theme
 
-[수학](/math) · [기계학습](/ml) · [철학](/philosophy) · [도구와 환경](/tools) · [전체 태그](/tags)
+·
 
-> [!note]- 이 블로그의 서식
-> 수학 글은 Wade의 *An Introduction to Analysis* 조판을 따릅니다. 한 글 안에서 정의·정리·보조정리·주해가 번호 하나를 공유하고, 정의만 박스로 빼고 나머지는 굵은 표제로 구분합니다. 증명은 접혀 있고 클릭하면 펼쳐집니다.
+> [!note]- Writting Protocol
+> Mathematics, Logics posting은 Wade의 *An Introduction to Analysis* 조판과 비슷하게 구성해 보았습니다. 한 글 안에서 Definition·Theorem·Lemma 등등 번호 하나를 공유하고, 정의만 박스로 빼고 나머지는 굵은 표제로 구분합니다. 증명은 접혀 있고 클릭하면 펼쳐집니다.
 >
-> 철학 글은 별도 서식 없이 평문으로 씁니다. 논증을 콜아웃으로 잘라내면 텍스트의 결이 죽는다고 봐서요. 대신 인용은 출처와 판본을 밝히고, 원어 표기가 필요한 개념은 처음 나올 때 병기합니다.
+> ~~나머지 posting은 정해지는 대로 삽입하겠습니다.~~
 >
 > 자세한 건 [서식 규약](/notes/conventions)에 정리해 두었습니다.
 
 # Lately
 
-- 읽는 중 : La Nausée (Jean-Paul Sartre)
-- 진행 중 : [[4. Probabilistic Backgrounds & GMM|ML.4]] 집필
+- Now Reading : La Nausée (Jean-Paul Sartre)
+- On Process : Posting [[4. Probabilistic Backgrounds & GMM|ML.4]]
