@@ -3,10 +3,38 @@
 // quartz/styles/custom.scss 끝에 붙여 넣으세요.
 // 색은 전부 Quartz 테마 변수만 씁니다. 다크모드에서 따로 손볼 것이 없습니다.
 
+article {
+  p {
+    text-indent: 1em;
+    margin: 0.6rem 0;
+  }
+
+  /* 소제목 바로 다음 첫 문단은 들여쓰지 않는다 */
+  h1 + p,
+  h2 + p,
+  h3 + p,
+  h4 + p {
+    text-indent: 0;
+  }
+
+  /* 콜아웃, 인용, 목록, 표 안의 문단은 제외 */
+  blockquote p,
+  li p,
+  td p,
+  th p,
+  .callout-content p {
+    text-indent: 0;
+  }
+
+  /* 디스플레이 수식 다음 줄은 이어지는 문장이므로 들여쓰지 않는다 */
+  .katex-display + p {
+    text-indent: 0;
+  }
+}
+
 /* ─────────────────────────────────────────────
    1. 홈 화면 연재 카드
    ───────────────────────────────────────────── */
-
 .home-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -185,6 +213,11 @@
    표제(**Definition 1.1.**)는 마크다운 굵은 글씨로 직접 씁니다.
    ───────────────────────────────────────────── */
 
+@counter-style paren-roman {
+  system: extends lower-roman;
+  suffix: ")  ";
+}
+
 .def {
   border: 1px solid var(--gray);
   border-radius: 3px;
@@ -203,6 +236,11 @@
   ol,
   ul {
     margin: 0.4rem 0;
+  }
+
+  // 박스 안 ordered list는 (i), (ii), (iii)
+  ol {
+    list-style-type: paren-roman;
   }
 }
 
