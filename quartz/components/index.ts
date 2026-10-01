@@ -24,7 +24,9 @@ import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
 import HomeEffects from "./HomeEffects"
-import IvanTitle from "./IvanTitle" 
+import IvanTitle from "./IvanTitle"
+import FontSize from "./FontSize"
+import Report from "./Report"
 
 export {
   ArticleTitle,
@@ -54,4 +56,6 @@ export {
   ConditionalRender,
   HomeEffects,
   IvanTitle,
+  FontSize,
+  Report
 }

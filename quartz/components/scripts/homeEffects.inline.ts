@@ -205,6 +205,30 @@ function setupToc() {
     return s
   }
 
+  // 폴더의 index.md 에서 선언한 Part 구획을 읽는다.
+  //   <div class="toc-parts" hidden>
+  //     <span data-at="0" data-title="Part I" data-desc="..."></span>
+  //   </div>
+  // data-at 은 그 Part 가 시작되는 글의 번호. Appendix 는 data-at="Appendix".
+  const parts = new Map<string, { title: string; desc: string }>()
+  for (const el of Array.from(document.querySelectorAll<HTMLElement>(".toc-parts [data-at]"))) {
+    const at = (el.dataset.at ?? "").trim()
+    if (!at) continue
+    parts.set(at, { title: el.dataset.title ?? "", desc: el.dataset.desc ?? "" })
+  }
+
+  const insertPart = (before: Element, at: string) => {
+    const spec = parts.get(at)
+    if (!spec) return false
+    parts.delete(at) // 같은 구획을 두 번 넣지 않는다
+    const part = document.createElement("li")
+    part.className = "toc-part"
+    if (spec.title) part.appendChild(span("toc-part-title", spec.title))
+    if (spec.desc) part.appendChild(span("toc-part-desc", spec.desc))
+    before.before(part)
+    return true
+  }
+
   let appendixStarted = false
   for (const li of Array.from(listing.querySelectorAll<HTMLElement>(".section-li"))) {
     // 날짜: 빌드 시점 표기와 어긋나지 않도록 ISO 문자열에서 바로 자른다
@@ -229,13 +253,17 @@ function setupToc() {
       li.classList.add("is-appendix")
       if (!appendixStarted) {
         appendixStarted = true
-        const part = document.createElement("li")
-        part.className = "toc-part"
-        part.textContent = "Appendix"
-        li.before(part)
+        // 선언된 구획이 있으면 그것을, 없으면 기본 "Appendix" 를 넣는다
+        if (!insertPart(li, "Appendix")) {
+          const part = document.createElement("li")
+          part.className = "toc-part"
+          part.appendChild(span("toc-part-title", "Appendix"))
+          li.before(part)
+        }
       }
     } else if (chapter) {
       num = `${chapter[1]}.`
+      insertPart(li, chapter[1])
       title = chapter[2]
     }
 

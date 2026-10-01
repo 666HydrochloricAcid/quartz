@@ -32,7 +32,15 @@ export const defaultContentPageLayout: PageLayout = {
     Component.IvanTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
-    Component.Darkmode(),
+    Component.Flex({
+    components: [
+      { Component: Component.Darkmode() },
+      { Component: Component.FontSize() },
+      { Component: Component.Report() },
+      ],
+      direction: "row",
+      gap: "1rem",
+    }),
     Component.Explorer({ folderDefaultState: "collapsed" }),
   ],
 

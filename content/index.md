@@ -9,7 +9,7 @@ description: Index Page
 <div class="home-grid">
   <a class="home-card" href="/Specialization/Mathematics/Mathematical-Logics/">
     <span class="home-card-title">Mathematical Logic</span>
-    <span class="home-card-desc">Now : -First-Order Logic</span>
+    <span class="home-card-desc">~First-Order Logic</span>
     <span class="home-card-meta">WIP · 0/10</span>
   </a>
   <a class="home-card" href="/Specialization/Mathematics/SetTheory/">
@@ -22,17 +22,17 @@ description: Index Page
     <span class="home-card-desc">Regression, Classification, and more</span>
     <span class="home-card-meta">WIP · 4/6</span>
   </a>
-  <a class="home-card" href="/Specialization/Statistics">
+  <a class="home-card" href="/Specialization/Statistics/">
     <span class="home-card-title">Statistics</span>
-    <span class="home-card-desc">As needed</span>
-    <span class="home-card-meta">WIP · 1/1</span>
+    <span class="home-card-desc">~Multi Random Variables</span>
+    <span class="home-card-meta">WIP · 1/11</span>
   </a>
-  <a class="home-card" href="/Dilettantism/Philosophy">
+  <a class="home-card" href="/Dilettantism/Philosophy/">
     <span class="home-card-title">Philosophy</span>
     <span class="home-card-desc">Up to my tastes, sporadically</span>
     <span class="home-card-meta">Prep</span>
   </a>
-  <a class="home-card" href="/Specialization/Deep-Learning">
+  <a class="home-card" href="/Specialization/Deep-Learning/">
     <span class="home-card-title">Deep Learning</span>
     <span class="home-card-desc">ANN-Transformer</span>
     <span class="home-card-meta">Prep</span>
@@ -44,14 +44,6 @@ description: Index Page
 IVAN is a space dedicated to rigorously constructing logical frameworks across academic disciplines within my scope of interest. Currently, in addition to my major in mathematics and artificial intelligence, I am planning content on philosophy and logic. I have restructured and organized the table of contents for each field according to my own perspective—please refer to the references section in each entry for sources.
 
 The name "IVAN" originates from my favorite character, **Ivan Karamazov**, in my favorite novel, _The Brothers Karamazov_. I felt it was a proper naming for this space because of our shared inclination toward deep intellectual pursuit.
-
-Abstractly saying, ultimate goal of IVAN is to construct a **Tower of Babel of intellect**.
- 
- ~~IVAN은 저의 관심사 안에 있는 학문들에 대하여, 엄밀하게 논리를 쌓아나가는 공간입니다. 현재까지는, 제 전공인 수학과, 인공지능 외에도, 철학이나 논리학 같은 것들을 구상중입니다. 각 학문의 목차는 제 나름대로 재구성하여 나열했고, 컨텐츠들의 출처는 각 항목의 reference를 참고해주세요.~~
-
-~~IVAN이라는 이름의 유래는 제가 가장 좋아하는 책, 『까라마조프가 형제들』 에서의 가장 좋아하는 등장인물 Ivan karamazov에서 따왔습니다. 지성을 탐닉하는 특성이 유사하여 블로그의 이름으로 적합하다고 판단하였습니다.~~
-
-~~추상적으로 말하면, IVAN의 궁극적 목적은 지성의 바벨 탑을 쌓는 것입니다.~~
 # Metatheory
 
 Although there are clear prerequisite relationships between the disciplines, they all rely on a shared metatheory; therefore, I recommend reading this first.

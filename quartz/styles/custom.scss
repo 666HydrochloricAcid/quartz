@@ -9,14 +9,6 @@ article {
     margin: 0.6rem 0;
   }
 
-  /* 소제목 바로 다음 첫 문단은 들여쓰지 않는다 */
-  h1 + p,
-  h2 + p,
-  h3 + p,
-  h4 + p {
-    text-indent: 0;
-  }
-
   /* 콜아웃, 인용, 목록, 표 안의 문단은 제외 */
   blockquote p,
   li p,
@@ -29,6 +21,10 @@ article {
   /* 디스플레이 수식 다음 줄은 이어지는 문장이므로 들여쓰지 않는다 */
   .katex-display + p {
     text-indent: 0;
+  }
+
+  .ivan-hero p {
+  text-indent: 0;
   }
 }
 
