@@ -275,10 +275,85 @@ function setupToc() {
   }
 }
 
+/* ─────────────────────────────────────────────
+   6. Explorer: 넘치는 제목만 끝을 흐리게 하고,
+   hover 하면 뒷부분이 드러나도록 글자를 흘린다.
+   - 넘침 판정은 스크립트가 실제로 재서 .is-clipped 를 붙인다
+   - 움직임은 transform 이라 레이아웃을 다시 계산하지 않는다
+   ───────────────────────────────────────────── */
+function setupExplorerRoll(): () => void {
+  const explorer = document.querySelector<HTMLElement>(".explorer")
+  if (!explorer) return () => {}
+
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  const unbind: Array<() => void> = []
+
+  const measure = () => {
+    const items = explorer.querySelectorAll<HTMLElement>(".explorer a, .explorer .folder-title")
+    for (const el of Array.from(items)) {
+      // 글자를 감쌀 span 이 없으면 만든다 (transform 으로 움직이기 위해)
+      let inner = el.querySelector<HTMLElement>(":scope > .roll-inner")
+      if (!inner) {
+        inner = document.createElement("span")
+        inner.className = "roll-inner"
+        while (el.firstChild) inner.appendChild(el.firstChild)
+        el.appendChild(inner)
+      }
+
+      const over = Math.round(inner.scrollWidth - el.clientWidth)
+      if (over <= 2) {
+        el.classList.remove("is-clipped")
+        el.style.removeProperty("--roll")
+        continue
+      }
+
+      el.classList.add("is-clipped")
+      el.style.setProperty("--roll", `${-over - 2}px`)
+      if (reduce) continue
+
+      const speed = Math.min(4, Math.max(0.6, over / 75))
+      const enter = () => {
+        inner!.style.transitionDuration = `${speed}s`
+        el.classList.add("is-rolling")
+      }
+      const leave = () => {
+        inner!.style.transitionDuration = "0.25s"
+        el.classList.remove("is-rolling")
+      }
+
+      // mouseenter/mouseleave 는 자식에서 올라오지 않으므로 떨림이 없다
+      el.addEventListener("mouseenter", enter)
+      el.addEventListener("mouseleave", leave)
+      el.addEventListener("focus", enter)
+      el.addEventListener("blur", leave)
+      unbind.push(() => {
+        el.removeEventListener("mouseenter", enter)
+        el.removeEventListener("mouseleave", leave)
+        el.removeEventListener("focus", enter)
+        el.removeEventListener("blur", leave)
+      })
+    }
+  }
+
+  // 서체가 늦게 로드되면 글자 폭이 달라지므로, 로드 후에 한 번 더 잰다
+  measure()
+  document.fonts?.ready.then(measure).catch(() => {})
+
+  // 폴더를 펼치면 항목이 새로 생기므로 다시 잰다
+  const observer = new MutationObserver(() => measure())
+  observer.observe(explorer, { childList: true, subtree: true })
+
+  return () => {
+    observer.disconnect()
+    unbind.forEach((fn) => fn())
+  }
+}
+
 /* ───────────────────────────────────────────── */
 
 document.addEventListener("nav", () => {
   setupToc()
+  window.addCleanup(setupExplorerRoll())
 
   const hero = document.querySelector<HTMLElement>(".ivan-hero")
   if (!hero) return

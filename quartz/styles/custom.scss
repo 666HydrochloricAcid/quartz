@@ -1,7 +1,10 @@
 @use "./base.scss";
 
-// quartz/styles/custom.scss 끝에 붙여 넣으세요.
 // 색은 전부 Quartz 테마 변수만 씁니다. 다크모드에서 따로 손볼 것이 없습니다.
+
+/* ─────────────────────────────────────────────
+   1. 본문 들여쓰기
+   ───────────────────────────────────────────── */
 
 article {
   p {
@@ -9,141 +12,35 @@ article {
     margin: 0.6rem 0;
   }
 
-  /* 콜아웃, 인용, 목록, 표 안의 문단은 제외 */
-  blockquote p,
-  li p,
-  td p,
-  th p,
-  .callout-content p {
+  // 소제목 바로 다음 첫 문단은 들여쓰지 않는다 (조판 관례)
+  h1 + p,
+  h2 + p,
+  h3 + p,
+  h4 + p {
     text-indent: 0;
   }
 
-  /* 디스플레이 수식 다음 줄은 이어지는 문장이므로 들여쓰지 않는다 */
+  // 인용, 목록, 표 안의 문단은 제외
+  blockquote p,
+  li p,
+  td p,
+  th p {
+    text-indent: 0;
+  }
+
+  // 디스플레이 수식 다음 줄은 이어지는 문장이므로 들여쓰지 않는다
   .katex-display + p {
     text-indent: 0;
   }
 
+  // 홈 히어로
   .ivan-hero p {
-  text-indent: 0;
+    text-indent: 0;
   }
 }
 
 /* ─────────────────────────────────────────────
-   1. 홈 화면 연재 카드
-   ───────────────────────────────────────────── */
-.home-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
-  margin: 1.2rem 0 2rem;
-
-  @media all and (max-width: 800px) {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-.home-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  padding: 0.9rem 1rem;
-  border: 1px solid var(--lightgray);
-  border-radius: 5px;
-  background-color: var(--light);
-  text-decoration: none;
-  background-image: none; // Quartz 기본 링크 밑줄 제거
-  transition: border-color 0.15s ease;
-
-  &:hover {
-    border-color: var(--secondary);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--secondary);
-    outline-offset: 2px;
-  }
-}
-
-.home-card-title {
-  font-family: var(--headerFont);
-  font-weight: 600;
-  color: var(--dark);
-}
-
-.home-card-desc {
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: var(--darkgray);
-}
-
-.home-card-meta {
-  margin-top: 0.15rem;
-  font-size: 0.75rem;
-  color: var(--gray);
-}
-
-/* ─────────────────────────────────────────────
-   2. Wade 스타일 수학 환경
-   정의만 박스, 나머지는 전부 활자 처리.
-   ob.ts 패치(callouts.patch.md)가 선행되어야 합니다.
-   ───────────────────────────────────────────── */
-
-// 공통: 아이콘 제거, 왼쪽 막대 제거, 여백 정리
-.callout[data-callout="definition"],
-.callout[data-callout="theorem"],
-.callout[data-callout="lemma"],
-.callout[data-callout="corollary"],
-.callout[data-callout="proposition"],
-.callout[data-callout="remark"],
-.callout[data-callout="proof"] {
-  --color: var(--darkgray);
-  --border: var(--lightgray);
-  --bg: transparent;
-
-  border-left: none;
-  border-radius: 0;
-  background-color: transparent;
-  padding: 0;
-  margin: 1.4rem 0;
-  font-size: inherit;
-
-  > .callout-title {
-    gap: 0.35rem;
-    padding: 0;
-    color: var(--dark);
-    font-weight: 700;
-    font-family: var(--headerFont);
-  }
-
-  .callout-icon,
-  .callout-title .fold {
-    display: none;
-  }
-
-  > .callout-content {
-    margin-top: 0.35rem;
-    padding: 0;
-  }
-
-  // 환경 안에서 문단 사이 여백을 줄여 교재 조판에 가깝게
-  > .callout-content > p {
-    margin: 0.4rem 0;
-  }
-
-  > .callout-content > p:first-child {
-    margin-top: 0;
-  }
-
-  > .callout-content > p:last-child {
-    margin-bottom: 0;
-  }
-}
-
-// quartz/styles/custom.scss 끝에 붙여 넣으세요.
-// 색은 전부 Quartz 테마 변수만 씁니다. 다크모드에서 따로 손볼 것이 없습니다.
-
-/* ─────────────────────────────────────────────
-   1. 홈 화면 연재 카드
+   2. 홈 화면 연재 카드
    ───────────────────────────────────────────── */
 
 .home-grid {
@@ -204,60 +101,133 @@ article {
 }
 
 /* ─────────────────────────────────────────────
-   2. 수학 글
-   Definition 박스: 외곽선만, 배경 없음.
-   표제(**Definition 1.1.**)는 마크다운 굵은 글씨로 직접 씁니다.
+   3. 수학 환경
+   표제는 **Definition 1.1.** 처럼 마크다운 굵은 글씨로 씁니다.
+   여는 태그 다음 줄과 닫는 태그 앞줄은 반드시 비웁니다.
    ───────────────────────────────────────────── */
 
+// 마크다운 목록을 (i), (ii), (iii) 으로
 @counter-style paren-roman {
   system: extends lower-roman;
   suffix: ")  ";
 }
 
-.def {
-  border: 1px solid var(--gray);
-  border-radius: 3px;
-  padding: 0.8rem 1rem;
-  margin: 1.4rem 0;
+.def,
+.thm,
+.lem,
+.cor,
+.prop,
+.recall,
+.rmk,
+.ex,
+.pf {
+  margin: 1.5rem 0;
 
-  > :first-child {
+  > p {
+    margin: 0.45rem 0;
+    text-indent: 0; // 전역 들여쓰기 해제
+  }
+
+  > p:first-child {
     margin-top: 0;
   }
 
-  > :last-child {
+  > p:last-child {
     margin-bottom: 0;
   }
 
-  // 박스 안 목록 여백을 조금 줄여 교재 조판에 가깝게
+  // (i), (ii) 를 문단으로 쓸 때만. <div class="def hang"> 처럼 붙입니다.
+  // 항목은 가능하면 마크다운 목록(1. 2. 3.)으로 쓰세요. (i), (ii) 로 표시되고
+  // 들여쓰기도 목록이 알아서 처리합니다.
+  &.hang > p + p {
+    padding-left: 2.2rem;
+    text-indent: -2.2rem;
+  }
+
+  // 마크다운 목록으로 쓸 때
   ol,
   ul {
     margin: 0.4rem 0;
   }
 
-  // 박스 안 ordered list는 (i), (ii), (iii)
   ol {
     list-style-type: paren-roman;
   }
+
+  // 표제(첫 문단 맨 앞의 굵은 글씨)만 헤더 서체로.
+  // Times New Roman 볼드는 화면에서 약해 본문에 묻힙니다.
+  > p:first-child > strong:first-child {
+    font-family: var(--headerFont);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  // 긴 수식이 박스를 뚫지 않도록
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
 }
 
-// 긴 수식이 박스를 뚫고 나가지 않도록
-.def .katex-display {
-  overflow-x: auto;
-  overflow-y: hidden;
+// Definition: 외곽선 박스
+.def {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--gray);
+  border-radius: 3px;
+}
+
+// Theorem 계열: 위쪽 가로선 + 이탤릭 진술 (Wade 조판)
+.thm,
+.lem,
+.cor,
+.prop {
+  // 가로줄 대신 여백으로 본문과 구분
+  margin: 2.2rem 0;
+
+  // 표제와 수식은 기울이지 않는다
+  > p:first-child > strong:first-child,
+  .katex,
+  code {
+    font-style: normal;
+  }
+}
+
+// Recall: 앞에서 가져온 것이므로 왼쪽 막대로 구분
+.recall {
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--lightgray);
+  color: var(--darkgray);
+}
+
+// Remark, Example: 표제만 구분하고 본문은 평문
+.rmk,
+.ex {
+  color: var(--darkgray);
+}
+
+// Proof: 끝에 ∎ 자동
+.pf {
+  color: var(--darkgray);
+
+  > :last-child::after {
+    content: " ∎";
+    font-style: normal;
+  }
 }
 
 /* ─────────────────────────────────────────────
-   3. 접는 Proof (선택)
-   <details class="proof"> 로 감쌌을 때만 적용됩니다.
-   평문으로 쓴 Proof 에는 아무 영향 없습니다.
+   4. 접는 증명
+   <details class="pf"> 로 감쌌을 때만 적용됩니다.
+   평문으로 쓴 <div class="pf"> 에는 영향 없습니다.
    ───────────────────────────────────────────── */
 
+details.pf,
 details.proof {
-  margin: 1rem 0 1.4rem;
+  margin: 1.5rem 0;
+  color: var(--darkgray);
 
   > summary {
     font-style: italic;
-    color: var(--darkgray);
     cursor: pointer;
     list-style: none;
 
@@ -277,26 +247,23 @@ details.proof {
     content: "";
   }
 
+  > p {
+    margin: 0.45rem 0;
+    text-indent: 0;
+  }
+
+  // 매달린 들여쓰기는 <details class="pf hang"> 일 때만
+  &.hang > p + p {
+    padding-left: 2.2rem;
+    text-indent: -2.2rem;
+  }
+
+  ol {
+    list-style-type: paren-roman;
+  }
+
   > :last-child::after {
     content: " ∎";
-  }
-
-  > p:nth-child(2) {
-    margin-top: 0.4rem;
-  }
-}
-/* ─────────────────────────────────────────────
-   3. 철학 글용 (평문 유지, 여백만 조정)
-   frontmatter 에 style: prose 를 넣은 글에만 적용됩니다.
-   ───────────────────────────────────────────── */
-
-article:has(+ .prose-marker),
-body[data-style="prose"] article {
-  p {
-    line-height: 1.8;
-  }
-
-  blockquote {
-    font-size: 0.95em;
+    font-style: normal;
   }
 }

@@ -1,0 +1,112 @@
+// custom.scss 의 기존 .def / details.proof 블록을 지우고 이것으로 교체하세요.
+// 전역 들여쓰기(article p { text-indent }) 규칙보다 아래에 두어야 합니다.
+
+/* ─────────────────────────────────────────────
+   공통
+   ───────────────────────────────────────────── */
+
+.def,
+.thm,
+.lem,
+.cor,
+.prop,
+.recall,
+.rmk,
+.ex,
+.pf {
+  margin: 1.5rem 0;
+
+  > p {
+    margin: 0.45rem 0;
+    text-indent: 0; // 본문 첫 줄 들여쓰기 해제
+  }
+
+  > p:first-child {
+    margin-top: 0;
+  }
+
+  > p:last-child {
+    margin-bottom: 0;
+  }
+
+  // (i), (ii) 항목. 둘째 문단부터 매달린 들여쓰기가 걸립니다.
+  // 줄이 넘어가도 표시 폭만큼 유지돼 왼쪽으로 튀어나온 모양이 됩니다.
+  > p + p {
+    padding-left: 2.2rem;
+    text-indent: -2.2rem;
+  }
+
+  // 표제(첫 문단 맨 앞의 굵은 글씨)만 헤더 서체로.
+  // Times New Roman 볼드는 화면에서 약해서 본문에 묻힙니다.
+  > p:first-child > strong:first-child {
+    font-family: var(--headerFont);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  // 긴 수식이 박스를 뚫지 않도록
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
+
+// 항목이 아니라 이어지는 문단일 때 매달린 들여쓰기를 끈다
+.no-hang > p + p {
+  padding-left: 0;
+  text-indent: 0;
+}
+
+/* ─────────────────────────────────────────────
+   환경별
+   ───────────────────────────────────────────── */
+
+// Definition: 외곽선 박스
+.def {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--gray);
+  border-radius: 3px;
+}
+
+// Theorem 계열: 박스 없이 위쪽 가로선 + 이탤릭 진술 (Wade 조판)
+.thm,
+.lem,
+.cor,
+.prop {
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--lightgray);
+
+  > p {
+    font-style: italic;
+  }
+
+  // 표제와 수식은 기울이지 않는다
+  > p:first-child > strong:first-child,
+  .katex,
+  code {
+    font-style: normal;
+  }
+}
+
+// Recall: 앞에서 가져온 것이므로 왼쪽 막대로 구분
+.recall {
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--lightgray);
+  color: var(--darkgray);
+}
+
+// Remark, Example: 표제만 구분하고 본문은 평문
+.rmk,
+.ex {
+  color: var(--darkgray);
+}
+
+// Proof: 이탤릭 표제, 끝에 ∎ 자동
+.pf {
+  color: var(--darkgray);
+
+  > :last-child::after {
+    content: " ∎";
+    font-style: normal;
+  }
+}

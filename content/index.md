@@ -7,32 +7,32 @@ description: Index Page
 # Series on Process
 
 <div class="home-grid">
-  <a class="home-card" href="/Specialization/Mathematics/Mathematical-Logics/">
+  <a class="home-card" href="/Mathematics/Mathematical-Logics/">
     <span class="home-card-title">Mathematical Logic</span>
     <span class="home-card-desc">~First-Order Logic</span>
     <span class="home-card-meta">WIP · 0/10</span>
   </a>
-  <a class="home-card" href="/Specialization/Mathematics/SetTheory/">
+  <a class="home-card" href="/Mathematics/Set-Theory/">
     <span class="home-card-title">Set Theory</span>
     <span class="home-card-desc">set theory</span>
     <span class="home-card-meta">WIP · 1/8</span>
   </a>
-   <a class="home-card" href="/Specialization/Machine-Learning/">
+   <a class="home-card" href="/AI/Machine-Learning/">
     <span class="home-card-title">Machine Learning</span>
     <span class="home-card-desc">Regression, Classification, and more</span>
     <span class="home-card-meta">WIP · 4/6</span>
   </a>
-  <a class="home-card" href="/Specialization/Statistics/">
+  <a class="home-card" href="/Mathematics/Statistics/">
     <span class="home-card-title">Statistics</span>
     <span class="home-card-desc">~Multi Random Variables</span>
     <span class="home-card-meta">WIP · 1/11</span>
   </a>
-  <a class="home-card" href="/Dilettantism/Philosophy/">
+  <a class="home-card" href="/Philosophy/">
     <span class="home-card-title">Philosophy</span>
     <span class="home-card-desc">Up to my tastes, sporadically</span>
     <span class="home-card-meta">Prep</span>
   </a>
-  <a class="home-card" href="/Specialization/Deep-Learning/">
+  <a class="home-card" href="/AI/Deep-Learning/">
     <span class="home-card-title">Deep Learning</span>
     <span class="home-card-desc">ANN-Transformer</span>
     <span class="home-card-meta">Prep</span>
@@ -59,5 +59,3 @@ Please also note that the prerequisite relationships between the subjects are pr
 
 > [!note]- Writting Protocol
 > Mathematics, Logics posting은 Wade의 *An Introduction to Analysis* 조판과 비슷하게 구성해 보았습니다. 한 글 안에서 Definition·Theorem·Lemma 등등 번호 하나를 공유하고, 정의만 박스로 빼고 나머지는 굵은 표제로 구분합니다. 증명은 접혀 있고 클릭하면 펼쳐집니다.
->
-> ~~나머지 posting은 정해지는 대로 삽입하겠습니다.~~

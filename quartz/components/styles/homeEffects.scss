@@ -410,3 +410,62 @@ body:not([data-slug^="tags/"]) .page-listing {
     transition: none;
   }
 }
+
+/* ─────────────────────────────────────────────
+   7. Explorer: 넘치는 제목만 끝을 흐리게
+   .is-clipped 와 --roll 은 스크립트가 붙인다.
+   ───────────────────────────────────────────── */
+
+.explorer {
+  a,
+  .folder-title {
+    display: block;
+    /* flex 안에서 글자 폭만큼 줄어들지 않고 남은 폭을 채우게 한다.
+       이게 있어야 "넘쳤는지"를 제대로 잴 수 있다. */
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .roll-inner {
+    display: inline-block;
+    transform: translateX(0);
+    transition: transform 0.25s linear;
+    will-change: transform;
+  }
+
+  /* 실제로 넘치는 항목만 끝이 흐려진다 */
+  .is-clipped {
+    mask-image: linear-gradient(to right, #000 calc(100% - 2.2rem), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 2.2rem), transparent 100%);
+  }
+
+  .is-clipped.is-rolling .roll-inner {
+    transform: translateX(var(--roll, 0));
+  }
+
+  /* 흘러가는 중에는 왼쪽 끝도 흐리게 */
+  .is-clipped.is-rolling {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 1.2rem,
+      #000 calc(100% - 2.2rem),
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 1.2rem,
+      #000 calc(100% - 2.2rem),
+      transparent 100%
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .explorer .roll-inner {
+    transition: none;
+  }
+}
