@@ -4,7 +4,7 @@ description: Index Page
 ---
 <div class="ivan-hero"> <div class="ivan-title" role="heading" aria-level="1"><span class="ivan-sr">IVAN</span><svg class="ivan-mark" viewBox="-6 -8 242 116" aria-hidden="true" focusable="false"><path style="--i:0" pathLength="1" d="M10,0 L10,100"/><path class="ivan-v" data-ivan-v style="--i:1" pathLength="1" d="M40,0 L60,100 L80,0"/><path style="--i:2" pathLength="1" d="M110,100 L130,0 L150,100 M118,62 L142,62"/><path style="--i:3" pathLength="1" d="M180,100 L180,0 L220,100 L220,0"/></svg></div> <p class="ivan-acro"><b>I</b><span class="tail" style="--i:0">ntellectual</span> <b>V</b><span class="tail" style="--i:1">alidation</span> <b >A</b><span class="tail" style="--i:2">nd</span> <b>N</b><span class="tail" style="--i:3">oting</span></p> </div>
 
-# Series on Process
+# Series on Processs
 
 <div class="home-grid">
   <a class="home-card" href="/Mathematics/Mathematical-Logics/">
@@ -25,7 +25,7 @@ description: Index Page
   <a class="home-card" href="/Mathematics/Statistics/">
     <span class="home-card-title">Statistics</span>
     <span class="home-card-desc">~Multi Random Variables</span>
-    <span class="home-card-meta">WIP · 1/11</span>
+    <span class="home-card-meta">WIP · 2/11</span>
   </a>
   <a class="home-card" href="/Philosophy/">
     <span class="home-card-title">Philosophy</span>
