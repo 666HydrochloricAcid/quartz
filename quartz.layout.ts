@@ -78,8 +78,7 @@ export const defaultContentPageLayout: PageLayout = {
           reactionsEnabled: true,
           inputPosition: "bottom",
           lang: "en",
-          themeUrl: "https://ivanh.netlify.app/static/giscus",
-          lightTheme: "mytheme-light",
+          lightTheme: "noborder_*",
           darkTheme: "noborder_*",
 
       },
