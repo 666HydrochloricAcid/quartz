@@ -78,8 +78,10 @@ export const defaultContentPageLayout: PageLayout = {
           reactionsEnabled: true,
           inputPosition: "bottom",
           lang: "en",
-          lightTheme: "noborder_light",
-          darkTheme: "transparent_dark",
+          themeUrl: "https://giscus.app/themes",
+          lightTheme: "light",
+          darkTheme: "dark_dimmed", // 원하는 내장 테마 이름
+
 
       },
     }),
