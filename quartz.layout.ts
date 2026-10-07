@@ -73,14 +73,14 @@ export const defaultContentPageLayout: PageLayout = {
           repoId: "R_kgDOOlGWVg",
           category: "Announcements",
           categoryId: "DIC_kwDOOlGWVs4DHOZX",
-          mapping: "pathname",
+          mapping: "pathname",ㄴ
           strict: true,
           reactionsEnabled: true,
           inputPosition: "bottom",
           lang: "en",
           themeUrl: "https://giscus.app/themes",
-          lightTheme: "light",
-          darkTheme: "dark_dimmed", // 원하는 내장 테마 이름
+          lightTheme: "transparent_dark",
+          darkTheme: "transparent_dark",
 
 
       },
