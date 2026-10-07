@@ -73,7 +73,7 @@ export const defaultContentPageLayout: PageLayout = {
           repoId: "R_kgDOOlGWVg",
           category: "Announcements",
           categoryId: "DIC_kwDOOlGWVs4DHOZX",
-          mapping: "pathname",ㄴ
+          mapping: "pathname",
           strict: true,
           reactionsEnabled: true,
           inputPosition: "bottom",
