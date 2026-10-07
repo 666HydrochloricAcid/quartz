@@ -56,7 +56,7 @@ export const defaultContentPageLayout: PageLayout = {
   afterBody: [
     Component.ConditionalRender({
       component: Component.RecentNotes({
-        title: "최근에 고친 노트",
+        title: "Lately Updated",
         limit: 5,
         linkToMore: "tags/" as SimpleSlug,
         filter: (f) => !["conventions", "index"].includes(f.slug ?? ""),
@@ -65,6 +65,27 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     // 아무것도 그리지 않고 CSS/JS만 싣습니다. 스크립트가 알아서 홈에서만 동작합니다.
     Component.HomeEffects(),
+    Component.ConditionalRender({
+      component: Component.Comments({
+        provider: "giscus",
+        options: {
+          repo: "666HydrochloricAcid/quartz",
+          repoId: "R_kgDOOlGWVg",
+          category: "Announcements",
+          categoryId: "DIC_kwDOOlGWVs4DHOZX",
+          mapping: "pathname",
+          strict: true,
+          reactionsEnabled: true,
+          inputPosition: "bottom",
+          lang: "en",
+          themeUrl: "https://ivanh.netlify.app/static/giscus",
+          lightTheme: "mytheme-light",
+          darkTheme: "noborder_*",
+
+      },
+    }),
+    condition: (page) => !onHome(page),
+  }),
   ],
 }
 
