@@ -78,8 +78,7 @@ export const defaultContentPageLayout: PageLayout = {
           reactionsEnabled: true,
           inputPosition: "bottom",
           lang: "en",
-          lightTheme: "noborder_*",
-          darkTheme: "noborder_*",
+          theme: "noborder_*",
 
       },
     }),
