@@ -32,10 +32,10 @@ description: Index Page
     <span class="home-card-desc">Up to my tastes, sporadically</span>
     <span class="home-card-meta">Prep</span>
   </a>
-  <a class="home-card" href="/AI/Deep-Learning/">
-    <span class="home-card-title">Deep Learning</span>
-    <span class="home-card-desc">ANN-Transformer</span>
-    <span class="home-card-meta">Prep</span>
+  <a class="home-card" href="/Mathematics/Algebra/">
+    <span class="home-card-title">Algebra</span>
+    <span class="home-card-desc">Groups and Rings</span>
+    <span class="home-card-meta">WIP · 1/13</span>
   </a>
 </div>
 
@@ -56,6 +56,3 @@ Please also note that the prerequisite relationships between the subjects are pr
 
 - Now Reading : La Nausée (Jean-Paul Sartre)
 - On Process : Posting [[4. Probabilistic Backgrounds & GMM|ML.4]]
-
-> [!note]- Writting Protocol
-> Mathematics, Logics posting은 Wade의 *An Introduction to Analysis* 조판과 비슷하게 구성해 보았습니다. 한 글 안에서 Definition·Theorem·Lemma 등등 번호 하나를 공유하고, 정의만 박스로 빼고 나머지는 굵은 표제로 구분합니다. 증명은 접혀 있고 클릭하면 펼쳐집니다.

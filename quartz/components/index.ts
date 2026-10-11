@@ -27,6 +27,8 @@ import HomeEffects from "./HomeEffects"
 import IvanTitle from "./IvanTitle"
 import FontSize from "./FontSize"
 import Report from "./Report"
+import ScrollToTop from "./ScrollToTop"
+import CiteButton from "./CiteButton"
 
 export {
   ArticleTitle,
@@ -57,5 +59,7 @@ export {
   HomeEffects,
   IvanTitle,
   FontSize,
-  Report
+  Report,
+  ScrollToTop,
+  CiteButton
 }

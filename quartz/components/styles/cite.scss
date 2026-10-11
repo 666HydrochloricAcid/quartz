@@ -1,0 +1,68 @@
+.cite {
+  display: inline-flex;
+  align-items: center;
+
+  .cite-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1;
+    color: var(--darkgray);
+
+    &:hover {
+      color: var(--secondary);
+    }
+  }
+
+  .cite-dialog {
+    border: 1px solid var(--lightgray);
+    border-radius: 8px;
+    padding: 0;
+    background: var(--light);
+    color: var(--dark);
+    max-width: min(90vw, 560px);
+
+    &::backdrop {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .cite-inner {
+      padding: 1rem 1.25rem;
+    }
+
+    .cite-heading {
+      margin: 0 0 0.5rem;
+      font-weight: 600;
+    }
+
+    pre {
+      margin: 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+    }
+
+    .cite-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 0.75rem;
+    }
+
+    .cite-copy {
+      cursor: pointer;
+      background: none;
+      border: 1px solid var(--lightgray);
+      border-radius: 4px;
+      padding: 0.2rem 0.7rem;
+      color: var(--darkgray);
+
+      &:hover {
+        color: var(--secondary);
+        border-color: var(--secondary);
+      }
+    }
+  }
+}

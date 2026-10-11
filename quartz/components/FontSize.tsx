@@ -6,8 +6,8 @@ const FontSize: QuartzComponent = ({ displayClass }: QuartzComponentProps) => (
   <button
     type="button"
     class={classNames(displayClass, "fontsize-toggle")}
-    title="본문 글자 크게"
-    aria-label="본문 글자 크게"
+    title="Larger Font"
+    aria-label="Larger Font"
     aria-pressed="false"
   >
     <span class="fontsize-mark" aria-hidden="true">
@@ -34,7 +34,7 @@ document.addEventListener("nav", () => {
   const sync = () => {
     const large = document.documentElement.getAttribute("data-font") === "large"
     button.setAttribute("aria-pressed", large ? "true" : "false")
-    button.title = large ? "본문 글자 기본 크기로" : "본문 글자 크게"
+    button.title = large ? "Default Font" : "Larger Font"
     button.setAttribute("aria-label", button.title)
   }
 

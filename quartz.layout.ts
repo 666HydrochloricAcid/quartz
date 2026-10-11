@@ -36,12 +36,14 @@ export const defaultContentPageLayout: PageLayout = {
     components: [
       { Component: Component.Darkmode() },
       { Component: Component.FontSize() },
+      { Component: Component.CiteButton() },
       { Component: Component.Report() },
       ],
       direction: "row",
       gap: "1rem",
     }),
     Component.Explorer({ folderDefaultState: "collapsed" }),
+
   ],
 
   right: [
@@ -65,6 +67,7 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     // 아무것도 그리지 않고 CSS/JS만 싣습니다. 스크립트가 알아서 홈에서만 동작합니다.
     Component.HomeEffects(),
+    Component.ScrollToTop(),
     Component.ConditionalRender({
       component: Component.Comments({
         provider: "giscus",
