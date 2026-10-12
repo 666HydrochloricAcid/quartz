@@ -1,0 +1,20 @@
+import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
+import style from "./styles/rssButton.scss"
+import { classNames } from "../util/lang"
+
+export default (() => {
+  const RssButton: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => (
+    <a
+      class={classNames(displayClass, "rss-button")}
+      href={`https://${cfg.baseUrl}/index.xml`}
+      aria-label="RSS"
+      title="Subscribe via RSS"
+      data-router-ignore
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rss preview-icon"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+    </a>
+  )
+
+  RssButton.css = style
+  return RssButton
+}) satisfies QuartzComponentConstructor

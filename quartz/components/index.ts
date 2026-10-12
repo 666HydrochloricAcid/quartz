@@ -29,6 +29,7 @@ import FontSize from "./FontSize"
 import Report from "./Report"
 import ScrollToTop from "./ScrollToTop"
 import CiteButton from "./CiteButton"
+import RssButton from "./RssButton"
 
 export {
   ArticleTitle,
@@ -61,5 +62,6 @@ export {
   FontSize,
   Report,
   ScrollToTop,
-  CiteButton
+  CiteButton,
+  RssButton
 }

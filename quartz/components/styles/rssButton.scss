@@ -1,0 +1,17 @@
+.rss-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  color: var(--darkgray);
+  text-decoration: none;
+
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    color: var(--secondary);
+  }
+}

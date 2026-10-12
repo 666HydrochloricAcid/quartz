@@ -38,6 +38,7 @@ export const defaultContentPageLayout: PageLayout = {
       { Component: Component.FontSize() },
       { Component: Component.CiteButton() },
       { Component: Component.Report() },
+      { Component: Component.RssButton() },
       ],
       direction: "row",
       gap: "1rem",

@@ -10,7 +10,7 @@ const NotFound: QuartzComponent = ({ cfg }: QuartzComponentProps) => {
     <article class="popover-hint not-found">
       <p class="nf-code">404</p>
       <p class="nf-math">
-        ∄ <i>p</i> ∈ Pages : url(<i>p</i>) = this
+        ∄ <i>p</i> ∈ Pages <i>s.t.</i> url(<i>p</i>) = this
       </p>
       <p class="nf-message">The page you are looking for does not exist, or has been moved.</p>
       <a class="nf-home internal" href={baseDir}>
