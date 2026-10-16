@@ -4,7 +4,7 @@ tags:
   - meta
   - logic
   - foundations
-draft:
+draft: true
 ---
 # 0. Introduction
 ---

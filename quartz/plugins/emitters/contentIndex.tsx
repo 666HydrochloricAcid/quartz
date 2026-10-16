@@ -39,6 +39,15 @@ const defaultOptions: Options = {
   includeEmptyFiles: true,
 }
 
+// 그래프용 계층 링크: 노트 → 같은 폴더의 index, 폴더 index → 상위 폴더의 index
+function parentIndex(slug: FullSlug): FullSlug | null {
+  if (slug === "index") return null
+  const parts = slug.split("/")
+  if (parts[parts.length - 1] === "index") parts.pop()
+  parts.pop()
+  return (parts.length === 0 ? "index" : parts.join("/") + "/index") as FullSlug
+}
+
 function generateSiteMap(cfg: GlobalConfiguration, idx: ContentIndexMap): string {
   const base = cfg.baseUrl ?? ""
   const createURLEntry = (slug: SimpleSlug, content: ContentDetails): string => `<url>
@@ -99,15 +108,25 @@ export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
     async *emit(ctx, content) {
       const cfg = ctx.cfg.configuration
       const linkIndex: ContentIndexMap = new Map()
+      const allSlugs = new Set(content.map(([_, f]) => f.data.slug!))
+
       for (const [tree, file] of content) {
         const slug = file.data.slug!
         const date = getDate(ctx.cfg.configuration, file.data) ?? new Date()
+
+        const links: SimpleSlug[] = [...(file.data.links ?? [])]
+        const parent = parentIndex(slug)
+        if (parent && allSlugs.has(parent)) {
+          const target = simplifySlug(parent)
+          if (!links.includes(target)) links.push(target)
+        }
+
         if (opts?.includeEmptyFiles || (file.data.text && file.data.text !== "")) {
           linkIndex.set(slug, {
             slug,
             filePath: file.data.relativePath!,
             title: file.data.frontmatter?.title!,
-            links: file.data.links ?? [],
+            links,
             tags: file.data.frontmatter?.tags ?? [],
             content: file.data.text ?? "",
             richContent: opts?.rssFullHtml

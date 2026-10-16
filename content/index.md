@@ -41,9 +41,22 @@ description: Index Page
 
 # About IVAN
 
-IVAN is a space dedicated to rigorously constructing logical frameworks across academic disciplines within my scope of interest. Currently, in addition to my major in mathematics and artificial intelligence, I am planning content on philosophy and logic. I have restructured and organized the table of contents for each field according to my own perspective—please refer to the references section in each entry for sources.
+**IVAN** is a space dedicated to rigorously constructing logical frameworks across academic disciplines within my scope of interest. Currently, in addition to my major in mathematics and artificial intelligence, I am planning content on philosophy and logic. I have restructured and organized the table of contents for each field according to my own perspective—please refer to the references section in each entry for sources.
 
-The name "IVAN" originates from my favorite character, **Ivan Karamazov**, in my favorite novel, _The Brothers Karamazov_. I felt it was a proper naming for this space because of our shared inclination toward deep intellectual pursuit.
+The name "**IVAN**" originates from my favorite character, **Ivan Karamazov**, in my favorite novel, _The Brothers Karamazov_. I felt it was a proper naming for this space because of our shared inclination toward deep intellectual pursuit.
+
+# Structure
+
+Mathematics is usually written in one of two forms. A book has a narrative: definitions lead to theorems, theorems to applications, and the motivation for each step is clear. But a book is closed. It rarely tells you where a result is used later, and connections to other fields are left to the reader. A wiki is the opposite. You can enter anywhere and move freely between related concepts, but each article stands alone, and the reason a concept is needed often gets lost.
+
+IVAN tries to keep both.
+
+- \[**Vertically, as series**\] Each subject is written as a numbered series that follows the order and motivation of a textbook. Read from the beginning, it reads like a book. Previous Post / Next Post at the end of each note keeps this thread.
+- \[**Through links and backlinks, as a wiki**\] Whenever a definition or theorem is used, it links back to the note where it first appears. Conversely, each note’s backlinks collect the places where it is used later, answering the question a book’s index cannot: _where does this result go next?_
+- \[**Horizontally, through tags**\] Ideas that recur across subjects, such as #quotients or #homomorphisms, are grouped by tags. On a tag page, factor rings from Algebra sit next to quotient spaces from Topology: one structure seen from several fields.
+
+If you are new, start from the contents page of a subject and follow the series. If you are looking for something specific, use search or the graph view, then follow the links.
+
 # Metatheory
 
 Although there are clear prerequisite relationships between the disciplines, they all rely on a shared metatheory; therefore, I recommend reading this first.
