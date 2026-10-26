@@ -4,7 +4,7 @@ description: Index Page
 ---
 <div class="ivan-hero"> <div class="ivan-title" role="heading" aria-level="1"><span class="ivan-sr">IVAN</span><svg class="ivan-mark" viewBox="-6 -8 242 116" aria-hidden="true" focusable="false"><path style="--i:0" pathLength="1" d="M10,0 L10,100"/><path class="ivan-v" data-ivan-v style="--i:1" pathLength="1" d="M40,0 L60,100 L80,0"/><path style="--i:2" pathLength="1" d="M110,100 L130,0 L150,100 M118,62 L142,62"/><path style="--i:3" pathLength="1" d="M180,100 L180,0 L220,100 L220,0"/></svg></div> <p class="ivan-acro"><b>I</b><span class="tail" style="--i:0">ntellectual</span> <b>V</b><span class="tail" style="--i:1">alidation</span> <b >A</b><span class="tail" style="--i:2">nd</span> <b>N</b><span class="tail" style="--i:3">oting</span></p> </div>
 
-# Series on Processs
+# Series in Progress
 
 <div class="home-grid">
   <a class="home-card" href="/Mathematics/Mathematical-Logics/">
@@ -49,7 +49,7 @@ The name "**IVAN**" originates from my favorite character, **Ivan Karamazov**, i
 
 Mathematics is usually written in one of two forms. A book has a narrative: definitions lead to theorems, theorems to applications, and the motivation for each step is clear. But a book is closed. It rarely tells you where a result is used later, and connections to other fields are left to the reader. A wiki is the opposite. You can enter anywhere and move freely between related concepts, but each article stands alone, and the reason a concept is needed often gets lost.
 
-IVAN tries to keep both.
+IVAN tries to keep both. Moreover 
 
 - \[**Vertically, as series**\] Each subject is written as a numbered series that follows the order and motivation of a textbook. Read from the beginning, it reads like a book. Previous Post / Next Post at the end of each note keeps this thread.
 - \[**Through links and backlinks, as a wiki**\] Whenever a definition or theorem is used, it links back to the note where it first appears. Conversely, each note’s backlinks collect the places where it is used later, answering the question a book’s index cannot: _where does this result go next?_
