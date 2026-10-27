@@ -8,12 +8,12 @@ draft: true
 ---
 # 0. Introduction
 ---
- 필자가 모든 학문의 토대가 되는 단 하나의 학문을 떠올려 봤을 때, 논리학이나, 집합론을 떠올릴 수 있었다. 하지만, 논리학 교재에선 집합론을, 집합론 교재에선 논리학을 가정하고 있다. 각자가 기대고 있는 **공리** 그 자체는 무엇인지, **참**이라는 것은 무엇인지에 대한 원론적인 호기심에서 비롯된 포스팅이다.
+In the pursuit of rigor, one can trace the prerequisites of any subject backwards, and the trail soon arrives at logic and set theory. Yet a look through introductory texts on either subject reveals that each almost always names the other as its prerequisite. Logic needs sets in order to speak of structures, interpretations, and models; set theory needs logic in order to state its axioms and to say what counts as a proof from them. This post grew out of an elementary curiosity about what lies beneath this circle: what the axioms each of them rests on actually are, and what it means for a statement to be **true*.
  
- 결론부터 말하면 논리학도 집합론도 먼저가 아니다. 둘은 서로 다른 층에 놓여 있고, 둘 다 그 아래의 더 소박한 추론에 기댄다. 이 글은 먼저 그 층들을 구분하고(§1–2), 가장 아래 층에서 무엇을 가정하는지 명시한 뒤(§3), 그 위에서 "정의", "증명", "참"이 각각 무엇을 뜻하는지 정한다(§4–5). 마지막으로 이 블로그가 취하는 입장을 적는다(§6–7).
+To state the conclusion first: neither logic nor set theory comes first. The two sit at different levels, and both rest on a more modest form of reasoning beneath them. This post first distinguishes these levels (§1–2), then makes explicit what is assumed at the lowest level (§3), and on that basis fixes what definition, proof, and truth each mean (§4–5). Finally, it states the position **IVAN** takes (§6–7).
 
-## 1. Metalanguage
-
+# 1. Metalanguage
+---
 "$\neg\varphi$는 formula다"라는 문장을 생각해 보자. 이 문장은 형식 언어로 쓰여 있지 않다. 한국어로, 형식 언어의 기호열 하나에 대해 말하고 있다. 논리학이 어려운 이유의 절반은, 언어에 대해 말하기 위해 또 다른 언어를 써야 한다는 데 있다.
 
 <div class="def">

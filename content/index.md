@@ -7,35 +7,25 @@ description: Index Page
 # Series in Progress
 
 <div class="home-grid">
-  <a class="home-card" href="/Mathematics/Mathematical-Logics/">
-    <span class="home-card-title">Mathematical Logic</span>
-    <span class="home-card-desc">~First-Order Logic</span>
-    <span class="home-card-meta">WIP · 0/10</span>
-  </a>
-  <a class="home-card" href="/Mathematics/Set-Theory/">
-    <span class="home-card-title">Set Theory</span>
-    <span class="home-card-desc">set theory</span>
-    <span class="home-card-meta">WIP · 1/8</span>
-  </a>
    <a class="home-card" href="/AI/Machine-Learning/">
     <span class="home-card-title">Machine Learning</span>
-    <span class="home-card-desc">Regression, Classification, and more</span>
+    <span class="home-card-desc">Now on 4</span>
     <span class="home-card-meta">WIP · 4/6</span>
   </a>
   <a class="home-card" href="/Mathematics/Statistics/">
     <span class="home-card-title">Statistics</span>
-    <span class="home-card-desc">~Multi Random Variables</span>
-    <span class="home-card-meta">WIP · 2/11</span>
-  </a>
-  <a class="home-card" href="/Philosophy/">
-    <span class="home-card-title">Philosophy</span>
-    <span class="home-card-desc">Up to my tastes, sporadically</span>
-    <span class="home-card-meta">Prep</span>
+    <span class="home-card-desc">Now on 3</span>
+    <span class="home-card-meta">WIP · 3/11</span>
   </a>
   <a class="home-card" href="/Mathematics/Algebra/">
     <span class="home-card-title">Algebra</span>
-    <span class="home-card-desc">Groups and Rings</span>
+    <span class="home-card-desc">Now on 9</span>
     <span class="home-card-meta">WIP · 1/13</span>
+  </a>
+  <a class="home-card" href="/Philosophy/">
+    <span class="home-card-title">Philosophy</span>
+    <span class="home-card-desc">-</span>
+    <span class="home-card-meta">Prep</span>
   </a>
 </div>
 
