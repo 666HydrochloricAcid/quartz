@@ -14,7 +14,7 @@ description: Index Page
   </a>
   <a class="home-card" href="/Mathematics/Statistics/">
     <span class="home-card-title">Statistics</span>
-    <span class="home-card-desc">Now on 3</span>
+    <span class="home-card-desc">Now on 4</span>
     <span class="home-card-meta">WIP · 3/11</span>
   </a>
   <a class="home-card" href="/Mathematics/Algebra/">
