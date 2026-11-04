@@ -180,17 +180,7 @@ article {
 .thm,
 .lem,
 .cor,
-.prop {
-  // 가로줄 대신 여백으로 본문과 구분
-  margin: 2.2rem 0;
-
-  // 표제와 수식은 기울이지 않는다
-  > p:first-child > strong:first-child,
-  .katex,
-  code {
-    font-style: normal;
-  }
-}
+.prop
 
 // Recall: 앞에서 가져온 것이므로 왼쪽 막대로 구분
 .recall {
