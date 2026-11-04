@@ -1,5 +1,10 @@
 @use "./base.scss";
 
+:root {
+  --headerFont: "Times New Roman", Tinos, serif;
+  --bodyFont: "Times New Roman", Tinos, serif;
+}
+
 // 색은 전부 Quartz 테마 변수만 씁니다. 다크모드에서 따로 손볼 것이 없습니다.
 
 /* ─────────────────────────────────────────────
