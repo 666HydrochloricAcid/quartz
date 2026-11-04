@@ -36,7 +36,7 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Libre Franklin",
+        header: "Times New Roman",
         body: "Times New Roman",
         code: "IBM Plex Mono",
       },
