@@ -45,7 +45,7 @@ IVAN tries to keep both. Moreover
 - \[**Through links and backlinks, as a wiki**\] Whenever a definition or theorem is used, it links back to the note where it first appears. Conversely, each note’s backlinks collect the places where it is used later, answering the question a book’s index cannot: _where does this result go next?_
 - \[**Horizontally, through tags**\] Ideas that recur across subjects, such as #quotients or #homomorphisms, are grouped by tags. On a tag page, factor rings from Algebra sit next to quotient spaces from Topology: one structure seen from several fields.
 
-If you are new, start from the contents page of a subject and follow the series. If you are looking for something specific, use search or the graph view, then follow the links.
+If you are looking for something specific, use search or the graph view, then follow the links. If you are new, I passionately recommend the following document. 
 
 # Metatheory
 
