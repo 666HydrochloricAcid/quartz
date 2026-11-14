@@ -83,13 +83,19 @@ At level 3, we define what it means for a sentence to be true in a structure. Si
 
 At level 4, formulas are coded as sets inside ZFC, and the whole of logic is recovered as theorems of ZFC.
 
+<div class='rmk'>
+
 **Remark 0.2.1** Levels 1 and 4 resemble each other, and this is why the situation looks circular: logic builds set theory, and set theory rebuilds logic. But the two are not the same. Level 1 handles symbols on paper; level 4 handles sets inside ZFC. The completeness theorem proved informally at level 3 and the result "ZFC $\vdash$ (the formalized completeness theorem)" obtained at level 4 are different statements. They are two levels that mirror each other, not a circle in which each holds the other up.
+
+</div>
 
 # 0.3 Specifying the Metatheory
 
 ---
 
 We fix the official metatheory of this blog as follows.
+
+<div class='rmk'>
 
 **Remark 0.3.1 [Level 0]** The following are used freely, without justification.
 
@@ -98,13 +104,27 @@ We fix the official metatheory of this blog as follows.
 3. Finite strings over a finite alphabet, together with their concatenation and length
 4. Case analysis over finitely many objects
 
+</div>
+
 Results about syntax, such as unique readability or deciding whether a given string is a formula, are proved using these alone. This level is known to be formalizable in a weak system such as primitive recursive arithmetic.
+
+<div class='rmk'>
 
 **Remark 0.3.2 [Naive Set Theory]** From level 3 on, we use the following informally: sets and subsets, ordered pairs and Cartesian products, relations and functions, power sets and unions, and $\mathbb{N}$ as an infinite set. These are used only in ways that could in principle be formalized in ZFC. In particular, we never form "the set of all things with property $P$" without restriction; we always carve a subset out of a set already given. This is exactly how Russell's paradox is blocked.
 
+</div>
+
+<div class='rmk'>
+
 **Remark 0.3.3 [Classical Logic]** Reasoning in the metalanguage follows classical logic. The law of excluded middle and proof by contradiction are used freely.
 
+</div>
+
+<div class='rmk'>
+
 **Remark 0.3.4 [Axiom of Choice]** Any theorem whose proof uses the axiom of choice, or an equivalent form such as Zorn's lemma or the well-ordering theorem, is marked **(AC)** after its number. Examples include the construction of the Vitali set in the [[Mathematics/Measure Theory/index|Measure Theory]] series and the completeness theorem for uncountable languages.
+
+</div>
 
 In short, proofs on this blog are rigorous **in the sense that they can be formalized in ZFC**. They are not actually formalized. Formalizability only guarantees that it could be done in principle; the notes themselves are written as proofs a person can read.
 
@@ -122,13 +142,19 @@ $$ A \subseteq B \ :\Longleftrightarrow\ \forall x,(x \in A \to x \in B). $$
 
 A symbol introduced by an explicit definition can always, in principle, be eliminated. ^def-0-4-1
 
-</div> <div class="def">
+</div> 
+
+<div class="def">
 
 **Definition 0.4.2 [Primitive Terms]** A symbol that is not defined within a theory and is constrained only by its axioms is called a **primitive term**. Examples are $\in$ in ZFC and $0, S, +, \cdot$ in PA. ^def-0-4-2
 
 </div>
 
+<div class='rmk'>
+
 **Remark 0.4.3** Primitive terms do not receive an absolute definition even when we move up to the metatheory. All the axioms can do is write down the conditions the term must satisfy, and there may be many interpretations that satisfy them. Hilbert is reported to have said that one could call points, lines, and planes "tables, chairs, and beer mugs," and geometry would be unchanged as long as the axioms held. This is described by saying that the axioms define the primitive terms **implicitly**.
+
+</div>
 
 Frege objected to this view. Axioms, he held, must be true statements about terms whose meaning is already fixed; to say that axioms create the meaning of their terms gets the order backwards. While doing mathematics, this blog follows Hilbert's approach. We note, however, that this is not a verdict on the philosophical dispute.
 
@@ -140,7 +166,11 @@ What, then, does the metatheory do with primitive terms? Instead of defining the
 
 </div>
 
+<div class='rmk'>
+
 **Remark 0.4.5** Structures are a level-3 notion. What gives meaning to primitive terms is a language one level up, and that language has primitive terms of its own. This regress stops at level 0. We return to this in [[#0.7 On Bedrock|§0.7]].
+
+</div>
 
 # 0.5 Proof and Truth
 
@@ -172,9 +202,17 @@ Here $t^{\mathcal{M}}$ is the element of $M$ denoted by the closed term $t$ in $
 
 </div>
 
+<div class='rmk'>
+
 **Remark 0.5.3** Clause 5 can be read by imagining that a name for the element $a \in M$ is temporarily added to the language. Strictly speaking, because of free variables, one first defines satisfaction relative to a variable assignment and then obtains truth as a special case. This is carried out in the [[Mathematics/Mathematical Logics/index|Mathematical Logic]] series.
 
+</div>
+
+<div class='rmk'>
+
 **Remark 0.5.4** Something about this definition looks odd. It uses "not" to define $\neg$, "there exists" to define $\exists$, and in clause 1 even the metalanguage's $=$ to define the object language's $=$. This looks circular, but the left-hand sides are symbols of the object language and the right-hand sides are statements of the metalanguage. **Unfolding the logical symbols of the object language into the logic of the metalanguage** is the whole of Tarski's definition. Tarski set as a criterion of adequacy that any definition of truth must imply every sentence of the form "'Snow is white' is true $\Longleftrightarrow$ snow is white," and this criterion is called **Convention T**.
+
+</div>
 
 <div class="def">
 
@@ -200,13 +238,21 @@ Deferred to the [[Mathematics/Mathematical Logics/index|Mathematical Logic]] ser
 
 </details>
 
+<div class='rmk'>
+
 **Remark 0.5.7** A language rich enough to express arithmetic cannot define its own truth. Truth is, in principle, a notion of the metatheory. Of all the notions that fit the picture of handling from outside what cannot be defined inside, truth fits it most exactly.
+
+</div>
+
+<div class='rmk'>
 
 **Remark 0.5.8** In first-order logic, soundness and completeness give
 
 $$ \Gamma \vdash \varphi \ \Longleftrightarrow\ \Gamma \models \varphi. $$
 
 On the other hand, the incompleteness theorem says that there is a sentence true in the standard model $\mathbb{N}$ but not provable in PA. The two theorems do not contradict each other. Completeness concerns truth in **every** model; incompleteness concerns truth in **one particular** model. Missing this difference makes the two theorems sound as if they clash.
+
+</div>
 
 # 0.6 The Position of IVAN
 

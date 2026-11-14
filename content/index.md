@@ -25,7 +25,7 @@ description: Index Page
   <a class="home-card" href="/Philosophy/">
     <span class="home-card-title">Philosophy</span>
     <span class="home-card-desc">-</span>
-    <span class="home-card-meta">Prep</span>
+    <span class="home-card-meta">WIP · 4/63</span>
   </a>
 </div>
 
